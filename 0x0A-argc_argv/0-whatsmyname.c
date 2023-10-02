@@ -2,6 +2,8 @@
 
 /**
  * main - entry point
+ * @argc: argument count
+ * @argv: array of arguments
  * Return: 0
  */
 
