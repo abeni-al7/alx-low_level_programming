@@ -10,7 +10,8 @@
 int main(int argc, char **argv)
 {
 	(void)argv;
-	printf("%d\n", argc);
+	_putchar(argc / 10 + '0');
+	_putchar(argc % 10 + '0');
 
 	return (0);
 }
