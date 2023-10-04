@@ -8,76 +8,58 @@
 
 char **strtow(char *str)
 {
-	int i = 0, k = 0, j = 0, len, num = 0;
+	int i = 0, k = 0, j = 0, len, num = 0, l;
 	char **words;
+	char *temp;
 
-	if (str == NULL || strlen(str) == 0)
+	if (str == NULL || strcmp(str, "") == 0)
 		return (NULL);
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (str[i] == ' ')
+		if (str[i] == ' ' && str[i + 1] != ' ')
 		{
-			if (k > 0)
-				num++;
-			k = 0;
+			num++;
 		}
-		else
-			k++;
 	}
-	if (k > 0)
-		num++;
 
 	words = malloc((num + 1) * sizeof(char *));
 	if (words == NULL)
 		return (NULL);
 
-	i = 0;
-	j = 0;
-	k = 0;
-	len = 0;
-
-	while (str[i] != '\0')
+	temp = strdup(str);
+	if (temp == NULL)
 	{
-		if (str[i] == ' ')
-		{
-			if (len > 0)
-			{
-				words[k] = malloc((len + 1) * sizeof(char));
-				if (words[k] == NULL)
-				{
-					for (j = 0; j < k; j++)
-						free(words[j]);
-					free(words);
-					return (NULL);
-				}
-				strncpy(words[k], &str[i - len], len);
-				words[k][len] = '\0';
-				k++;
-				len = 0;
-			}
-		}
-		else
-			len++;
-		i++;
+		free(words);
+		return (NULL);
 	}
-	if (len > 0)
+
+	k = 0;
+	for (i = 0; temp[i] != '\0'; i++)
 	{
+		while (temp[i] == ' ')
+			i++;
+
+		len = 0;
+		for (j = i; temp[j] != ' ' && temp[j] != '\0'; j++)
+			len++;
+
 		words[k] = malloc((len + 1) * sizeof(char));
 		if (words[k] == NULL)
 		{
-			for (j = 0; j < k; j++)
-				free(words[j]);
+			for (l = 0; l < k; l++)
+				free(words[l]);
 			free(words);
+			free(temp);
 			return (NULL);
 		}
-		strncpy(words[k], &str[i - len], len);
+		strncpy(words[k], &temp[i], len);
 		words[k][len] = '\0';
 		k++;
+		i = j;
 	}
 	words[k] = NULL;
+	free(temp);
 
 	return (words);
 }
-
-
