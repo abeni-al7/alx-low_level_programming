@@ -12,7 +12,7 @@ char **strtow(char *str)
 	char **words;
 	char *temp;
 
-	if (str == NULL || strcmp(str, "") == 0)
+	if (str == NULL || strcmp(str, "") == 0, strcmp(str, " "))
 		return (NULL);
 
 	for (i = 0; str[i] != '\0'; i++)
