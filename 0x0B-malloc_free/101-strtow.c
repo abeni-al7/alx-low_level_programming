@@ -8,8 +8,8 @@
 
 char **strtow(char *str)
 {
-	int word_count = 0; i, j, k = 0, start, length, l;
 	char **words;
+	int word_count = 0, i, k = 0, start, length, l;
 
 	if (str == NULL || strcmp(str, "") == 0)
 		return (NULL);
