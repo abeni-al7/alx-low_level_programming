@@ -5,9 +5,11 @@
 #include <stdlib.h>
 
 /**
- * @struct dog
- * @brief Contains information about dogs
- * This structure has information about a dog
+ * struct dog - a struct for data of dogs
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
+ * Description: This structure has information about a dog
  */
 
 typedef struct dog
