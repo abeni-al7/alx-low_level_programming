@@ -1,39 +1,37 @@
 #include "function_pointers.h"
 
-void print_opcodes(int num_bytes);
-
 /**
- * main - entry point
- * @ac: argument count
- * @av: array of arguments
+ * main - prints its own opcodes
+ * @argc: argument count
+ * @argv: array of arguments
  * Return: 0
  */
 
-int main(int ac, char **av)
+int main(int argc, char *argv[])
 {
+	int bytes, i;
 	char *arr;
-	int size, i = 0;
 
-	if (ac != 2)
+	if (argc != 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
-	size = atoi(av[1]);
-	if (size < 0)
+	bytes = atoi(argv[1]);
+	if (bytes < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
-	for (i = 0; i < size; i++)
+	arr = (char *)main;
+	for (i = 0; i < bytes; i++)
 	{
-		if (i == size - 1)
+		if (i == bytes - 1)
 		{
 			printf("%02hhx\n", arr[i]);
 			break;
 		}
 		printf("%02hhx ", arr[i]);
 	}
-
 	return (0);
 }
