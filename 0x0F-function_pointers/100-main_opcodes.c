@@ -11,8 +11,7 @@ void print_opcodes(int num_bytes);
 
 int main(int ac, char **av)
 {
-	unsigned char *start;
-	size_t bytes;
+	char *arr;
 	int size, i = 0;
 
 	if (ac != 2)
@@ -26,11 +25,15 @@ int main(int ac, char **av)
 		printf("Error\n");
 		exit(2);
 	}
-	bytes = (size_t)size;
-	start = (unsigned char *)&main;
 	for (i = 0; i < size; i++)
-		printf("%02x ", start[i]);
-	printf("\n");
+	{
+		if (i == size - 1)
+		{
+			printf("%02hhx\n", arr[i]);
+			break;
+		}
+		printf("%02hhx ", arr[i]);
+	}
 
 	return (0);
 }
