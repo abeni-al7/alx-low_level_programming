@@ -11,7 +11,6 @@ void print_all(const char * const format, ...)
 	const char *str;
 	char sep = '\0';
 	va_list args;
-	float f = 0.0;
 
 	va_start(args, format);
 
@@ -24,7 +23,7 @@ void print_all(const char * const format, ...)
 				sep = ',';
 				break;
 			case 'i':
-				printf("%d", sep, va_arg(args, int));
+				printf("%d", va_arg(args, int));
 				sep = ',';
 				break;
 			case 'f':
