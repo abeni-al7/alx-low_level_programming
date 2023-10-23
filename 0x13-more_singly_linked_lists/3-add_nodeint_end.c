@@ -3,7 +3,7 @@
 /**
  * add_nodeint_end - adds a new node at the end of a linked list
  * @head: pointer to the pointer of the first element of the list
- * @n:
+ * @n: data contained in the new node
  * Return: address of the new node
  */
 
@@ -20,7 +20,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 		*head = new;
 	else
 	{
-		while(current->next != NULL)
+		while (current->next != NULL)
 			current = current->next;
 		current->next = new;
 	}
