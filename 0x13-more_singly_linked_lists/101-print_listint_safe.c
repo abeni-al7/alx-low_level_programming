@@ -9,8 +9,9 @@
 size_t print_list(const listint_t *head)
 {
 	size_t num = 0;
-	listint_t *current = head;
+	const listint_t *current;
 
+	current = head;
 	while (current != NULL)
 	{
 		printf("[%p] %d\n", (void *)current, current->n);
@@ -28,11 +29,12 @@ size_t print_list(const listint_t *head)
  * Return: number of nodes printed
  */
 
-size_t print_list_in_loop(const listint_t *head, listint_t *loop)
+size_t print_list_in_loop(const listint_t *head, const listint_t *loop)
 {
 	size_t num = 0;
-	listint_t *current = head;
+	const listint_t *current;
 
+	current = head;
 	while (current != NULL)
 	{
 		printf("[%p] %d\n", (void *)current, current->n);
@@ -56,10 +58,11 @@ size_t print_list_in_loop(const listint_t *head, listint_t *loop)
  * Return: the location of the loop
  */
 
-listint_t *find_loop_start(const listint_t *head, listint_t *meet)
+const listint_t *find_loop_start(const listint_t *head, const listint_t *meet)
 {
-	listint_t *start = head;
+	const listint_t *start;
 
+	start = head;
 	while (start != meet)
 	{
 		start = start->next;
