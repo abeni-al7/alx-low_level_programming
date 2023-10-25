@@ -1,6 +1,75 @@
 #include "lists.h"
 
 /**
+ * print_list - print a linked list
+ * @head: pointer to the first element of the list
+ * Return: number of nodes printed
+ */
+
+size_t print_list(const listint_t *head)
+{
+	size_t num = 0;
+	listint_t *current = head;
+
+	while (current != NULL)
+	{
+		printf("[%p] %d\n", (void *)current, current->n);
+		num++;
+		current = current->next;
+	}
+
+	return (num);
+}
+
+/**
+ * print_list_in_loop - print the list if there is a loop
+ * @head: pointer to the first element of the list
+ * @loop: address of the loop
+ * Return: number of nodes printed
+ */
+
+size_t print_list_in_loop(const listint_t *head, listint_t *loop)
+{
+	size_t num = 0;
+	listint_t *current = head;
+
+	while (current != NULL)
+	{
+		printf("[%p] %d\n", (void *)current, current->n);
+		num++;
+		current = current->next;
+		if (current == loop)
+		{
+			printf("-> [%p] %d\n", (void *)current, current->n);
+			num++;
+			break;
+		}
+	}
+
+	return (num);
+}
+
+/**
+ * find_loop_start - finds the start of a loop in a linked list
+ * @head: pointer to the first element of linked list
+ * @meet: meeting point of head with the loop
+ * Return: the location of the loop
+ */
+
+listint_t *find_loop_start(const listint_t *head, listint_t *meet)
+{
+	listint_t *start = head;
+
+	while (start != meet)
+	{
+		start = start->next;
+		meet = meet->next;
+	}
+
+	return (start);
+}
+
+/**
  * print_listint_safe - prints a linked list with the address
  * @head: pointer to the first element of the list
  * Return: number of nodes in the list
@@ -9,26 +78,27 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t num = 0;
-	const listint_t *visited[200];
-	size_t i;
+	const listint_t *slow, *fast, *loop;
 
-	while (head != NULL)
+	if (head == NULL)
+		exit(98);
+
+	slow = fast = head;
+	while (slow && fast && fast->next)
 	{
-		for (i = 0; i < num; i++)
+		slow = slow->next;
+		fast = fast->next->next;
+
+		if (slow == fast)
 		{
-			if (head == visited[i])
-			{
-				printf("-> %d\n", head->n);
-				return (num);
-			}
+			loop = find_loop_start(head, slow);
+			break;
 		}
-		if (num >= 100)
-			return (num);
-		visited[num] = head;
-		printf("[%p] %d\n", (void *)head, head->n);
-		head = head->next;
-		num++;
 	}
+	if (loop)
+		num = print_list_in_loop(head, loop);
+	else
+		num = print_list(head);
 
 	return (num);
 }
