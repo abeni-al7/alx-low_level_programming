@@ -35,18 +35,14 @@ size_t print_list_in_loop(const listint_t *head, const listint_t *loop)
 	const listint_t *current;
 
 	current = head;
-	while (current != NULL)
+	while (current != loop)
 	{
-		printf("[%p] %d\n", (void *)current, current->n);
+		printf("[%p] %d\n", (const void *)current, current->n);
 		num++;
 		current = current->next;
-		if (current == loop)
-		{
-			printf("-> [%p] %d\n", (void *)current, current->n);
-			num++;
-			break;
-		}
 	}
+	printf("-> [%p] %d\n", (void *)current, current->n);
+	num++;
 
 	return (num);
 }
