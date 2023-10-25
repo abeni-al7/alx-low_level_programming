@@ -17,7 +17,10 @@ size_t print_listint_safe(const listint_t *head)
 		for (i = 0; i < num; i++)
 		{
 			if (head == visited[i])
-				return (num);
+			{
+				printf("-> %d\n", head->n);
+				continue;
+			}
 		}
 		if (num >= 100)
 			return (num);
