@@ -24,22 +24,12 @@ size_t print_listint_safe(const listint_t *head)
 
 		if (slow == fast)
 		{
+			printf("-> %d\n", slow->n);
 			break;
 		}
 	}
-	if (fast && fast->next)
-	{
-		slow = head;
-		while (slow != fast)
-		{
-			printf("%d\n", slow->n);
-			num++;
-			slow = slow->next;
-			fast = fast->next;
-		}
-	}
 
-	else
+	if (!fast || !fast->next)
 	{
 		while (head)
 		{
