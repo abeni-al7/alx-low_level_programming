@@ -10,7 +10,7 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 	int fd;
-	ssize_t written, text_len = strlen(text_content);
+	ssize_t written;
 
 	if (filename == NULL)
 		return (-1);
@@ -20,8 +20,8 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (-1);
 	if (text_content != NULL)
 	{
-		written = write(fd, text_content, text_len);
-		if (written == -1 || written != text_len)
+		written = write(fd, text_content, strlen(text_content));
+		if (written == -1 || written != strlen(text_content))
 		{
 			close(fd);
 			return (-1);
