@@ -13,7 +13,6 @@ int create_file(const char *filename, char *text_content)
 	mode_t original = umask(0);
 	ssize_t written;
 	int fd;
-	ssize_t text_len = strlen(text_content);
 
 	if (filename == NULL)
 		return (-1);
@@ -24,8 +23,8 @@ int create_file(const char *filename, char *text_content)
 	umask(original);
 	if (text_content != NULL)
 	{
-		written = write(fd, text_content, text_len);
-		if (written == -1 || written != text_len)
+		written = write(fd, text_content, strlen(text_content));
+		if (written == -1 || written != (ssize_t)strlen(text_content))
 		{
 			close(fd);
 			return (-1);
