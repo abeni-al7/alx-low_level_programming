@@ -9,7 +9,7 @@
 
 int main(int ac, char **av)
 {
-	char buffer[100];
+	char buffer[1024];
 	ssize_t nb_read, written;
 	mode_t permission = 0664;
 	mode_t original = umask(0);
@@ -51,8 +51,16 @@ int main(int ac, char **av)
 		}
 	}
 
-	close(fd_from);	
-	close(fd_to);
+	if (close(fd_from) == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", fd_from);
+		exit(100);
+	}	
+	if (close(fd_to) == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", fd_to);
+		exit(100);
+	}
 
 	return (0);
 }
