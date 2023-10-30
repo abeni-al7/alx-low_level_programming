@@ -29,7 +29,7 @@ int main(int ac, char **av)
 	int fd_from, fd_to;
 
 	if (ac != 3)
-		handle_error(97, "Usage: %s file_from file_to\n", av[0]);
+		handle_error(97, "Usage: cp file_from file_to\n", "");
 	fd_from = open(av[1], O_RDONLY);
 	if (fd_from == -1)
 		handle_error(98, "Error: Can't read from file %s\n", av[1]);
