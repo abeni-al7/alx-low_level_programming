@@ -43,7 +43,7 @@ int main(int ac, char **av)
 		if (nb_read == -1)
 			handle_error(98, "Error: Can't read from file %s\n", av[1]);
 		written = write(fd_to, buffer, nb_read);
-		if (written == -1)
+		if (written == -1 || written != nb_read)
 			handle_error(99, "Error: Can't write to %s\n", av[2]);
 	}
 	if (close(fd_from) == -1)
