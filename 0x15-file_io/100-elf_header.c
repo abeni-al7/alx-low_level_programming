@@ -6,7 +6,7 @@
  * @error_message: error message
  */
 
-void handle_error(int error_code, const char* error_message)
+void handle_error(int error_code, const char *error_message)
 {
 	fprintf(stderr, "Error %d: %s\n", error_code, error_message);
 	exit(98);
@@ -25,11 +25,11 @@ void print_elf_header(const Elf64_Ehdr *header)
 	for (i = 0; i < EI_NIDENT; i++)
 		printf("%02x ", header->e_ident[i]);
 	printf("\n");
-	printf("Class: %s\n", 
+	printf("Class: %s\n",
 		header->e_ident[EI_CLASS] == ELFCLASS32 ?
 		"ELF32" : (header->e_ident[EI_CLASS] == ELFCLASS64 ?
 		"ELF64" : "Unknown"));
-	printf("Data: %s\n", 
+	printf("Data: %s\n",
 	header->e_ident[EI_DATA] == ELFDATA2LSB ?
 	"2's complement, little endian" : (header->e_ident[EI_DATA] == ELFDATA2MSB ?
 	"2's complement, big endian" : "Unknown"));
@@ -65,5 +65,5 @@ int main(int argc, char **argv)
 	print_elf_header(&header);
 	if (close(fd) == -1)
 		handle_error(98, "Can't close the file");
-	return 0;
+	return (0);
 }
