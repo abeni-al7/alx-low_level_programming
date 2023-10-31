@@ -19,7 +19,7 @@ void handle_error(int code, const char *message)
  * Return: 0
  */
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
 	unsigned char magic[] = {0x7F, 'E', 'L', 'F'};
 	int fd;
