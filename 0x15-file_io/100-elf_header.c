@@ -29,7 +29,7 @@ void print_elf(const Elf64_Ehdr *header)
 	printf("	Class:	%s\n",
 		header->e_ident[EI_CLASS] == ELFCLASS32 ? "ELF32" : "ELF64");
 	printf("	Data:	%s\n",
-		header->e_ident[EI_DATA] == ELFDATA2LSB ? 
+		header->e_ident[EI_DATA] == ELFDATA2LSB ?
 		"2's complement, little endian" : "2's complement, big endian");
 	printf("	Version:	%d(current)\n",
 		header->e_ident[EI_VERSION]);
