@@ -32,7 +32,7 @@ void print_elf(const Elf64_Ehdr *header)
 		header->e_ident[EI_DATA] == ELFDATA2LSB ? "2's complement, little endian" : "2's complement, big endian");
 	printf("	Version:	%d(current)\n",
 		header->e_ident[EI_VERSION]);
-	printf("	OS/ABI:	%s\n",
+	printf("	OS/ABI:	%d\n",
 		header->e_ident[EI_OSABI]);
 	printf("	ABI Version:	%d\n",
 		header->e_ident[EI_ABIVERSION]);
@@ -53,8 +53,6 @@ void print_elf(const Elf64_Ehdr *header)
 
 int main(int ac, char **av)
 {
-	unsigned int i;
-	unsigned char magic[] = {0x7F, 'E', 'L', 'F'};
 	int fd;
 	char *filename;
 	Elf64_Ehdr buffer;
