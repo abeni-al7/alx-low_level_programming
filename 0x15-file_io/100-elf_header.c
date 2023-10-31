@@ -21,6 +21,7 @@ void handle_error(int code, const char *message)
 
 int main(int ac, char **av)
 {
+	unsigned int i;
 	unsigned char magic[] = {0x7F, 'E', 'L', 'F'};
 	int fd;
 	char *filename, buffer[62];
@@ -38,7 +39,9 @@ int main(int ac, char **av)
 		handle_error(98, "File can not be read\n");
 	if (memcmp(buffer, magic, 4) != 0)
 		handle_error(98, "File is not ELF\n");
-	printf("%s\n", buffer);
+	for (i = 0; i < sizeof(buffer); i++)
+		printf("%02x ", buffer[i]);
+	printf("\n");
 
 	if (close(fd) == -1)
 		handle_error(98, "Can't close the elf file\n");
