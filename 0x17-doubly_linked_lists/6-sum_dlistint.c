@@ -6,7 +6,7 @@
  * Return: sum of all data in linked list or 0
  */
 
-int sum_dlistint(dlistint *head)
+int sum_dlistint(dlistint_t *head)
 {
 	int sum = 0;
 
