@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Island perimeter"""
+"""A module for finding Island perimeter"""
 
 
 def island_perimeter(grid):
-	"""Island perimeter"""
+	"""A function for finding Island perimeter"""
 	visit = set()
 	def depth_first_search(i, j):
 		if i >= len(grid) or j >= len(grid[0] or i < 0 or j < 0 or grid[i][j] == 0:
