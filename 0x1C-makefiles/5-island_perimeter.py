@@ -24,5 +24,3 @@ def island_perimeter(grid):
 				if depth_first_search(i, i) != None:
 					return depth_first_search(i, j)
 	return 0
-
-print(island_perimeter([[0], [0], [0]]))
