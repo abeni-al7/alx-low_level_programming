@@ -3,6 +3,12 @@
 
 def island_perimeter(grid):
 	"""A function for finding Island perimeter"""
+	no_island = True
+	for i in range(len(grid)):
+		if 1 in grid[i]:
+			no_island = False
+	if no_island:
+		return 0
 	visit = set()
 
 	def depth_first_search(i, j):
