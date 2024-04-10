@@ -5,12 +5,13 @@
  * @array: pointer to the first element of the array to search in
  * @size: number of elements in array
  * @value: value to search for
- * Return: the index where value is located 
+ * Return: the index where value is located
 */
 
 int binary_search(int *array, size_t size, int value)
 {
 	size_t i, left = 0, right = size - 1, mid;
+
 	while (left <= right)
 	{
 		printf("Searching in array: ");
